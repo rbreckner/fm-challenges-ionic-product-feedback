@@ -1,0 +1,24 @@
+:host {
+  display: block;
+
+  padding-top: var(--app-default-spacing);
+
+  ion-avatar {
+    width: 40px;
+    height: 40px;
+
+    margin-right: 16px;
+  }
+
+  p {
+    margin-top: 16px;
+  }
+
+  &:not(.comment-reply) {
+    padding-bottom: var(--app-default-spacing);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(140, 146, 179, .25);
+    }
+  }
+}

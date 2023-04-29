@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import {SuggestionsComponent} from './suggestions/suggestions.component';
+import {SuggestionsComponent} from './pages/suggestions/suggestions.component';
+import {FeedbackDetailComponent} from './pages/feedback-detail/feedback-detail.component';
 
 const routes: Routes = [
   {
     path: '',
     component: SuggestionsComponent
+  },
+  {
+    path: 'feedback-detail/:id',
+    component: FeedbackDetailComponent
   },
   {
     path: 'folder/:id',

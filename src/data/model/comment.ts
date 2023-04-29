@@ -5,5 +5,6 @@ export interface Comment {
   content: string
   user: User,
   replies?: Comment[];
-  replyTo?: number;
+  replyToCommentId?: number;
+  replyToUserName?: string;
 }

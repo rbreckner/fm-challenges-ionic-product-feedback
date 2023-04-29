@@ -1,0 +1,20 @@
+<ion-card>
+  <ion-card-content>
+    <div class="card-title card-title__large">Add Comment</div>
+    <ion-textarea class="mt-24"
+                  placeholder="Type your comment here"
+                  rows="2"
+                  maxlength="250"
+                  [autoGrow]="true"
+                  [(ngModel)]="newComment">
+    </ion-textarea>
+    <ion-row class="mt-14 ion-justify-content-between ion-align-items-center">
+      <ion-col>{{newCommentCharsLeft}} Characters left</ion-col>
+      <ion-col size="auto">
+        <ion-button (click)="addComment.emit(newComment)">
+          Post Comment
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

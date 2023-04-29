@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductRequest} from '../../../data/model/product-request';
 
 @Component({
-  selector: 'app-suggestion-item',
-  templateUrl: './suggestion-item.component.html',
-  styleUrls: ['./suggestion-item.component.scss'],
+  selector: 'app-product-request-card',
+  templateUrl: './product-request-card.component.html',
+  styleUrls: ['./product-request-card.component.scss'],
 })
-export class SuggestionItemComponent  implements OnInit {
+export class ProductRequestCardComponent implements OnInit {
   @Input() productRequest: ProductRequest | undefined;
 
   get commentAmount() {

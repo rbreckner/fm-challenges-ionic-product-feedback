@@ -15,8 +15,8 @@
       --color: var(--ion-color-light);
 
       ion-title {
-        padding-left: var(--app-default-padding);
-        padding-right: var(--app-default-padding);
+        padding-left: var(--app-default-spacing);
+        padding-right: var(--app-default-spacing);
         font-size: var(--app-font-size-body);
 
         strong {

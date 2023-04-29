@@ -16,7 +16,6 @@
   --ion-color-secondary-contrast-rgb: 255,255,255;
   --ion-color-secondary-shade: #3e55ca;
   --ion-color-secondary-tint: #5971e9;
-  --ion-color-secondary-tint: #5971e9;
 
   --ion-color-tertiary: #3A4374;
   --ion-color-tertiary-rgb: 58,67,116;
@@ -46,12 +45,19 @@
   --ion-color-danger-shade: #bd3030;
   --ion-color-danger-tint: #db4b4b;
 
-  --ion-color-medium: #92949c;
-  --ion-color-medium-rgb: 146,148,156;
-  --ion-color-medium-contrast: #000000;
-  --ion-color-medium-contrast-rgb: 0,0,0;
-  --ion-color-medium-shade: #808289;
-  --ion-color-medium-tint: #9d9fa6;
+  //--ion-color-medium: #92949c;
+  //--ion-color-medium-rgb: 146,148,156;
+  //--ion-color-medium-contrast: #000000;
+  //--ion-color-medium-contrast-rgb: 0,0,0;
+  //--ion-color-medium-shade: #808289;
+  //--ion-color-medium-tint: #9d9fa6;
+
+  --ion-color-medium: #647196;
+  --ion-color-medium-rgb: 100,113,150;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255,255,255;
+  --ion-color-medium-shade: #586384;
+  --ion-color-medium-tint: #747fa1;
 
   --ion-color-light: #f4f5f8;
   --ion-color-light-rgb: 244,245,248;
@@ -67,7 +73,7 @@
   --app-color-body: #647196;
 
   --app-header-height: 72px;
-  --app-default-padding: 24px;
+  --app-default-spacing: 24px;
   --app-border-radius: 10px;
 
   --app-font-size-body: 13px;

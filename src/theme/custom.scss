@@ -2,8 +2,6 @@
 
 app-root {
   --ion-font-family: 'Jost';
-  --ion-padding: var(--app-default-padding);
-
   font-size: var(--app-font-size-body);
 }
 
@@ -14,10 +12,10 @@ ion-header {
 }
 
 ion-content {
-  --padding-top: var(--app-default-padding);
-  --padding-bottom: var(--app-default-padding);
-  --padding-start: var(--app-default-padding);
-  --padding-end: var(--app-default-padding);
+  --padding-top: var(--app-default-spacing);
+  --padding-bottom: var(--app-default-spacing);
+  --padding-start: var(--app-default-spacing);
+  --padding-end: var(--app-default-spacing);
   --background: var(--app-color-background);
 }
 
@@ -35,6 +33,10 @@ ion-button {
     --color: var(--ion-color-secondary);
     --box-shadow: none;
   }
+
+  svg {
+    margin-right: 15px;
+  }
 }
 
 ion-card {
@@ -43,8 +45,11 @@ ion-card {
   box-shadow: none;
   --color: var(--app-color-body);
 
-  .card-content-md p {
-    font-size: var(--app-font-size-body);
+  .card-content-md {
+    padding: var(--app-default-spacing);
+    p {
+      font-size: var(--app-font-size-body);
+    }
   }
 
   .card-title {
@@ -92,6 +97,30 @@ ion-select-popover {
       &:hover {
         color: var(--ion-color-primary);
       }
+    }
+  }
+}
+
+ion-textarea.sc-ion-textarea-md-h {
+  --background: var(--app-color-background);
+  --border-radius: 5px;
+  //--highlight-color-focused: var(--ion-color-secondary);
+
+  .native-wrapper textarea.sc-ion-textarea-md {
+    padding: 16px;
+  }
+
+  .textarea-highlight {
+    display: none;
+  }
+
+  .textarea-wrapper {
+    border: 1px solid var(--app-color-background);
+  }
+
+  &.has-focus {
+    .textarea-wrapper {
+      border-color: var(--ion-color-secondary);
     }
   }
 }

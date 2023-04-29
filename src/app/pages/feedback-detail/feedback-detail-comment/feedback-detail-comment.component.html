@@ -1,0 +1,30 @@
+<ion-row>
+  <ion-col size="auto">
+    <ion-avatar>
+      <img [src]="comment?.user?.image"/>
+    </ion-avatar>
+  </ion-col>
+  <ion-col>
+    <div class="card-title">{{comment?.user?.name}}</div>
+    <small>@{{comment?.user?.username}}</small>
+  </ion-col>
+  <ion-col size="auto">
+    <ion-button class="button-link">
+      Reply
+    </ion-button>
+  </ion-col>
+</ion-row>
+<p>
+  <ion-text *ngIf="comment?.replyToUserName as userName"
+            color="primary" bo>
+    <strong>@{{userName}}</strong>
+  </ion-text>
+  {{comment?.content}}
+</p>
+
+<div class="ion-padding-start">
+  <app-feedback-detail-comment *ngFor="let reply of comment?.replies"
+                               class="comment-reply"
+                               [comment]="reply">
+  </app-feedback-detail-comment>
+</div>

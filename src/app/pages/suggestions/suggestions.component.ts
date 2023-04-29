@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductRequest} from '../../data/model/product-request';
-import {productRequestsMock} from '../../data/product-requests-mock';
+import {ProductRequest} from '../../../data/model/product-request';
+import {productRequestsMock} from '../../../data/product-requests-mock';
 import {SuggestionSortOptions} from './suggestion-sort-options';
 import {MenuController} from '@ionic/angular';
+import {ProductRequestService} from '../../../data/product-request.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -14,7 +15,7 @@ export class SuggestionsComponent implements OnInit {
 
   categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
-  productRequests: ProductRequest[] = productRequestsMock;
+  productRequests: ProductRequest[];
 
   sortby: SuggestionSortOptions = SuggestionSortOptions.MostUpvotes;
   selectedCategory = 'All';
@@ -58,7 +59,8 @@ export class SuggestionsComponent implements OnInit {
     ]
   }
 
-  constructor() {
+  constructor(private productRequestService: ProductRequestService) {
+    this.productRequests = this.productRequestService.productRequests;
   }
 
   ngOnInit() {
