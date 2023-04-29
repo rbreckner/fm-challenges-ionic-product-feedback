@@ -1,0 +1,44 @@
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content"
+            type="overlay"
+            side="end"
+            style="margin-top: 56px;">
+    <ion-content>
+      hello its funny sidebar
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+
+    <ion-header class="mobile-header">
+      <ion-toolbar>
+        <ion-title>
+          <div><strong>Frontend Mentor</strong></div>
+          <div>Feedback board</div>
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-row class="ion-justify-content-between ion-align-items-center suggestion-nav">
+        <ion-col>
+          <app-suggestion-sort (selected)="sortby = $event"></app-suggestion-sort>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-button>+ Add Feedback</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-header>
+
+    <ion-content>
+      <app-suggestion-empty *ngIf="!productRequests?.length"></app-suggestion-empty>
+
+      <div style="display: grid">
+        <app-suggestion-item *ngFor="let item of sortedProductRequests"
+                             [productRequest]="item">
+        </app-suggestion-item>
+      </div>
+    </ion-content>
+  </div>
+
+</ion-split-pane>

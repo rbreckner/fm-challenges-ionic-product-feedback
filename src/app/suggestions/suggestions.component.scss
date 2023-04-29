@@ -1,0 +1,29 @@
+:host {
+  .mobile-header {
+    ion-toolbar {
+      --background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+      --color: var(--ion-color-light);
+
+      ion-title {
+        padding-left: var(--app-default-padding);
+        padding-right: var(--app-default-padding);
+        font-size: var(--app-font-size-body);
+
+        strong {
+          font-size: 15px;
+          font-weight: 700;
+        }
+      }
+
+      ion-buttons {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .suggestion-nav {
+    padding: 8px 24px;
+    background-color: var(--app-color-dark-blue);
+    color: var(--ion-color-light);
+  }
+}

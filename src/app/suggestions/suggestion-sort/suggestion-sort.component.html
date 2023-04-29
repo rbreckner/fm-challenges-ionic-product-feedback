@@ -1,0 +1,19 @@
+<!--<div id="click-trigger">Sortby: <strong>Most Upvotes</strong></div>-->
+<!--<ion-popover trigger="click-trigger" triggerAction="click">-->
+<!--  <ng-template>-->
+<!--    <ion-content class="ion-padding">Hello World!</ion-content>-->
+<!--  </ng-template>-->
+<!--</ion-popover>-->
+<!--<ion-item>-->
+<ion-select label="Sort by :"
+            [value]="value"
+            mode="ios"
+            interface="popover"
+            justify="start"
+            (ionChange)="setSort($event)">
+  <ion-select-option *ngFor="let option of suggestionSortOptions"
+                     [value]="option.value">
+    {{option.text}}
+  </ion-select-option>
+</ion-select>
+<!--</ion-item>-->

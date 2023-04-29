@@ -1,0 +1,31 @@
+<ion-card>
+  <ion-card-content class="ion-padding">
+    <div class="card-title">
+      {{productRequest?.title}}
+    </div>
+    <p>
+      {{productRequest?.description}}
+    </p>
+    <ion-chip color="secondary">{{productRequest?.category}}</ion-chip>
+    <ion-row class="ion-justify-content-between ion-align-items-center ion-margin-top">
+      <ion-col size="auto">
+        <ion-chip color="secondary" class="chip-upvotes">
+          <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
+          </svg>
+          {{productRequest?.upvotes}}
+        </ion-chip>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button color="secondary" fill="clear" class="button-comments">
+          <svg width="18" height="16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2.62 16H1.346l.902-.91c.486-.491.79-1.13.872-1.823C1.036 11.887 0 9.89 0 7.794 0 3.928 3.52 0 9.03 0 14.87 0 18 3.615 18 7.455c0 3.866-3.164 7.478-8.97 7.478-1.017 0-2.078-.137-3.025-.388A4.705 4.705 0 012.62 16z"
+              fill="#CDD2EE" fill-rule="nonzero"/>
+          </svg>
+          {{productRequest?.comments?.length}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

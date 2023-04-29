@@ -1,0 +1,27 @@
+:host {
+  ion-card {
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    p {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .chip-upvotes {
+      svg {
+        margin-right: 10px;
+      }
+      color: var(--app-color-dark-blue);
+      font-weight: 700;
+    }
+
+    .button-comments {
+      margin-right: -15px;
+      svg {
+        margin-right: 10px;
+      }
+      --color: var(--app-color-dark-blue) !important;
+    }
+  }
+}
