@@ -1,0 +1,7 @@
+{
+  "name": "fm-challenges-ionic-product-feedback",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
