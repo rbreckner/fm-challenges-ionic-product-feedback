@@ -7,6 +7,12 @@ app-root {
   font-size: var(--app-font-size-body);
 }
 
+ion-header {
+  ion-toolbar {
+    --min-height: var(--app-header-height);
+  }
+}
+
 ion-content {
   --padding-top: var(--app-default-padding);
   --padding-bottom: var(--app-default-padding);
@@ -17,10 +23,18 @@ ion-content {
 
 ion-button {
   margin: 0;
+  height: 40px;
   --border-radius: var(--app-border-radius);
   text-transform: none;
   font-size: var(--app-font-size-body);
   font-weight: 700;
+
+  &.button-link {
+    text-decoration: underline;
+    --background: transparent;
+    --color: var(--ion-color-secondary);
+    --box-shadow: none;
+  }
 }
 
 ion-card {
@@ -38,7 +52,7 @@ ion-card {
     font-weight: 700;
     color: var(--app-color-heading);
 
-    &-large {
+    &__large {
       font-size: 18px;
     }
   }
@@ -50,6 +64,14 @@ ion-chip {
   font-size: var(--app-font-size-body);
   font-weight: 700;
   text-transform: capitalize;
+
+  --background: rgba(var(--ion-color-secondary-rgb), 0.08);
+  --color: var(--ion-color-secondary);
+
+  &.active {
+    --background: var(--ion-color-secondary);
+    --color: var(--ion-color-secondary-contrast);
+  }
 }
 
 ion-col {
@@ -72,4 +94,13 @@ ion-select-popover {
       }
     }
   }
+}
+
+.bullet {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background-color: var(--color);
+  margin-right: 16px;
 }

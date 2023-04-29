@@ -7,5 +7,5 @@ export interface ProductRequest {
   upvotes: number
   status: string
   description: string
-  comments?: Comment[]
+  comments: Comment[]
 }

@@ -1,4 +1,14 @@
 :host {
+  ion-menu {
+    margin-top: var(--app-header-height);
+    --width: 271px;
+
+    ion-chip {
+      margin-right: 14px;
+      margin-bottom: 14px;
+    }
+  }
+
   .mobile-header {
     ion-toolbar {
       --background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
@@ -16,9 +26,13 @@
       }
 
       ion-buttons {
-        margin-right: 10px;
+        margin-right: 14px;
       }
     }
+  }
+
+  .ion-page {
+    margin-top: var(--app-header-height);
   }
 
   .suggestion-nav {

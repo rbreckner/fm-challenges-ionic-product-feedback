@@ -9,6 +9,10 @@ import {ProductRequest} from '../../../data/model/product-request';
 export class SuggestionItemComponent  implements OnInit {
   @Input() productRequest: ProductRequest | undefined;
 
+  get commentAmount() {
+    return this.productRequest?.comments.length;
+  }
+
   constructor() { }
 
   ngOnInit() {}
