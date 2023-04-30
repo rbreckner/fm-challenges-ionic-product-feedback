@@ -1,0 +1,28 @@
+<ion-card>
+  <ion-card-content class="p-24 pt-14">
+    <ion-row class="ion-justify-content-between ion-align-items-center"
+             style="margin-bottom: 14px;">
+      <ion-col size="auto">
+        <div class="app-title app-title__large">Roadmap</div>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button class="button-link mr--14"
+                    routerLink="/roadmap">
+          View
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let status of statuses"
+             class="ion-justify-content-between"
+             style="margin-bottom: 8px;">
+      <ion-col size="auto">
+        <div class="bullet" [style.--color]="status.color"></div>
+        {{status.name}}
+      </ion-col>
+      <ion-col size="auto">
+        <strong>{{status.amount}}</strong>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

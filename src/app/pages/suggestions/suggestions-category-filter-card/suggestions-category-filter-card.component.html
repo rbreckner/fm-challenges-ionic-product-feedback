@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-card-content class="p-24">
+    <ion-chip *ngFor="let category of categories"
+              [class.active]="category === selectedCategory"
+              (click)="categorySelected.emit(category)">
+      {{category}}
+    </ion-chip>
+  </ion-card-content>
+</ion-card>

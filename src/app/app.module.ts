@@ -7,9 +7,9 @@ import {IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SuggestionsComponent} from './pages/suggestions/suggestions.component';
-import {SuggestionEmptyComponent} from './pages/suggestions/suggestion-empty/suggestion-empty.component';
+import {SuggestionsEmptyComponent} from './pages/suggestions/suggestions-empty/suggestions-empty.component';
 import {ProductRequestCardComponent} from './shared/product-request-card/product-request-card.component';
-import {SuggestionSortComponent} from './pages/suggestions/suggestion-sort/suggestion-sort.component';
+import {SuggestionsSortComponent} from './pages/suggestions/suggestions-sort/suggestions-sort.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FeedbackDetailComponent} from './pages/feedback-detail/feedback-detail.component';
 import {
@@ -20,6 +20,12 @@ import {
 } from './pages/feedback-detail/feedback-detail-add-comment-card/feedback-detail-add-comment-card.component';
 import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.component';
 import {RoadmapComponent} from './pages/roadmap/roadmap.component';
+import {
+  SuggestionsCategoryFilterCardComponent
+} from './pages/suggestions/suggestions-category-filter-card/suggestions-category-filter-card.component';
+import {
+  SuggestionsRoadmapCardComponent
+} from './pages/suggestions/suggestions-roadmap-card/suggestions-roadmap-card.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +33,9 @@ import {RoadmapComponent} from './pages/roadmap/roadmap.component';
     ProductRequestCardComponent,
 
     SuggestionsComponent,
-    SuggestionEmptyComponent,
-    SuggestionSortComponent,
+    SuggestionsCategoryFilterCardComponent,
+    SuggestionsEmptyComponent,
+    SuggestionsSortComponent,
 
     FeedbackDetailComponent,
     FeedbackDetailCommentComponent,
@@ -36,7 +43,8 @@ import {RoadmapComponent} from './pages/roadmap/roadmap.component';
 
     FeedbackFormComponent,
 
-    RoadmapComponent
+    RoadmapComponent,
+    SuggestionsRoadmapCardComponent
   ],
   imports: [
     BrowserModule,

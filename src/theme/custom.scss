@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+@import "mixins";
 
 p {
   color: var(--app-color-body);
@@ -7,6 +8,10 @@ p {
 app-root {
   --ion-font-family: 'Jost';
   font-size: var(--app-font-size-body);
+}
+
+ion-app {
+  background-color: var(--app-color-background);
 }
 
 ion-header {
@@ -21,6 +26,11 @@ ion-content {
   --padding-start: var(--app-default-spacing);
   --padding-end: var(--app-default-spacing);
   --background: var(--app-color-background);
+
+  @include for-tablet-up {
+    --padding-start: 40px;
+    --padding-end: 40px;
+  }
 }
 
 ion-button {
@@ -59,6 +69,12 @@ ion-card {
     p {
       font-size: var(--app-font-size-body);
     }
+  }
+}
+
+ion-row.stretch-cards {
+  ion-card {
+    height: 100%;
   }
 }
 
@@ -197,3 +213,24 @@ ion-segment {
 .background-dark {
   background-color: var(--app-color-dark-blue);
 }
+
+.query-container {
+  container-type: inline-size;
+}
+
+@container (max-width:600px) {
+  .hide-in-small-container {
+    display: none;
+  }
+}
+
+@container (min-width:601px) {
+  .hide-in-large-container {
+    display: none;
+  }
+}
+
+
+
+
+

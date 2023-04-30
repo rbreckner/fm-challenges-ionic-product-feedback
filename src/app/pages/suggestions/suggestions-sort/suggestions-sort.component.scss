@@ -1,0 +1,9 @@
+:host {
+  #click-trigger {
+    --padding: 0;
+  }
+
+  ion-select::part(text) {
+    font-weight: 700;
+  }
+}

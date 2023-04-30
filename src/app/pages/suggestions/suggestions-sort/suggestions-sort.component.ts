@@ -2,11 +2,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SuggestionSortOptions} from '../suggestion-sort-options';
 
 @Component({
-  selector: 'app-suggestion-sort',
-  templateUrl: './suggestion-sort.component.html',
-  styleUrls: ['./suggestion-sort.component.scss']
+  selector: 'app-suggestions-sort',
+  templateUrl: './suggestions-sort.component.html',
+  styleUrls: ['./suggestions-sort.component.scss']
 })
-export class SuggestionSortComponent implements OnInit {
+export class SuggestionsSortComponent implements OnInit {
   suggestionSortOptions = [
     {
       value: SuggestionSortOptions.MostUpvotes,
