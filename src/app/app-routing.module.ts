@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {SuggestionsComponent} from './pages/suggestions/suggestions.component';
 import {FeedbackDetailComponent} from './pages/feedback-detail/feedback-detail.component';
+import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,16 @@ const routes: Routes = [
     component: SuggestionsComponent
   },
   {
-    path: 'feedback-detail/:id',
+    path: 'feedback/detail/:id',
     component: FeedbackDetailComponent
+  },
+  {
+    path: 'feedback/create',
+    component: FeedbackFormComponent
+  },
+  {
+    path: 'feedback/edit/:id',
+    component: FeedbackFormComponent
   },
   {
     path: 'folder/:id',

@@ -37,6 +37,10 @@ ion-button {
   svg {
     margin-right: 15px;
   }
+
+  [slot="icon-only"] svg {
+    margin-right: 0;
+  }
 }
 
 ion-card {
@@ -47,6 +51,7 @@ ion-card {
 
   .card-content-md {
     padding: var(--app-default-spacing);
+
     p {
       font-size: var(--app-font-size-body);
     }
@@ -104,7 +109,6 @@ ion-select-popover {
 ion-textarea.sc-ion-textarea-md-h {
   --background: var(--app-color-background);
   --border-radius: 5px;
-  //--highlight-color-focused: var(--ion-color-secondary);
 
   .native-wrapper textarea.sc-ion-textarea-md {
     padding: 16px;
@@ -124,6 +128,44 @@ ion-textarea.sc-ion-textarea-md-h {
     }
   }
 }
+
+ion-input.sc-ion-input-md-h {
+  --background: var(--app-color-background);
+  --border-radius: 5px;
+
+  .native-wrapper input.sc-ion-input-md {
+    padding: 16px;
+  }
+
+  .input-highlight {
+    display: none;
+  }
+
+  .input-wrapper {
+    border: 1px solid var(--app-color-background);
+  }
+
+  &.has-focus {
+    .input-wrapper {
+      border-color: var(--ion-color-secondary);
+    }
+  }
+}
+
+ion-select.legacy-select {
+  border-radius: 5px;
+  background: var(--app-color-background);
+  border: 1px solid var(--app-color-background);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+
+  &.select-expanded {
+    border-color: var(--ion-color-secondary);
+  }
+}
+
 
 .bullet {
   display: inline-block;

@@ -1,0 +1,76 @@
+<ion-content>
+  <ion-button fill="clear" color="medium" routerLink="/">
+    <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6 9L2 5l4-4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
+    </svg>
+    Go Back
+  </ion-button>
+
+  <div class="form-container mt-30">
+    <div class="form-circle">
+      <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient cx="103.9%" cy="-10.387%" fx="103.9%" fy="-10.387%" r="166.816%" id="a">
+            <stop stop-color="#E84D70" offset="0%"/>
+            <stop stop-color="#A337F6" offset="53.089%"/>
+            <stop stop-color="#28A7ED" offset="100%"/>
+          </radialGradient>
+        </defs>
+        <g fill="none" fill-rule="evenodd">
+          <circle fill="url(#a)" cx="28" cy="28" r="28"/>
+          <path fill="#FFF" fill-rule="nonzero"
+                d="M30.343 36v-5.834h5.686v-4.302h-5.686V20h-4.597v5.864H20v4.302h5.746V36z"/>
+        </g>
+      </svg>
+    </div>
+    <ion-card>
+      <ion-card-content>
+
+        <div class="card-title card-title__large">Create New Feedback</div>
+
+        <form *ngIf="productRequestForm" [formGroup]="productRequestForm">
+          <div class="mt-24">
+            <label class="card-title">Feedback Title</label>
+            <p>Add a short, descriptive headline</p>
+            <ion-input formControlName="title"></ion-input>
+          </div>
+
+          <div class="mt-24">
+            <label class="card-title">Category</label>
+            <p>Choose a category for your feedback</p>
+            <ion-select formControlName="category"
+                        interface="popover"
+                        mode="ios"
+                        [legacy]="true">
+              <ion-select-option *ngFor="let category of categories"
+                                 [value]="category">
+                {{category}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="mt-24">
+            <label class="card-title">Feedback Detail</label>
+            <p>Include any specific comments on what should be improved, added, etc.</p>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </div>
+        </form>
+
+        <ion-button class="mt-50"
+                    expand="block"
+                    (click)="save()">
+          Add Feedback
+        </ion-button>
+
+        <ion-button class="mt-16"
+                    expand="block"
+                    color="tertiary"
+                    routerLink="/">
+          Cancel
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

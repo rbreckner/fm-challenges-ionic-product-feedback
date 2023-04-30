@@ -10,7 +10,7 @@ import {SuggestionsComponent} from './pages/suggestions/suggestions.component';
 import {SuggestionEmptyComponent} from './pages/suggestions/suggestion-empty/suggestion-empty.component';
 import {ProductRequestCardComponent} from './shared/product-request-card/product-request-card.component';
 import {SuggestionSortComponent} from './pages/suggestions/suggestion-sort/suggestion-sort.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FeedbackDetailComponent} from './pages/feedback-detail/feedback-detail.component';
 import {
   FeedbackDetailCommentComponent
@@ -18,6 +18,7 @@ import {
 import {
   FeedbackDetailAddCommentCardComponent
 } from './pages/feedback-detail/feedback-detail-add-comment-card/feedback-detail-add-comment-card.component';
+import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +31,23 @@ import {
 
     FeedbackDetailComponent,
     FeedbackDetailCommentComponent,
-    FeedbackDetailAddCommentCardComponent
+    FeedbackDetailAddCommentCardComponent,
+
+    FeedbackFormComponent
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
-  bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 }
