@@ -19,6 +19,7 @@ import {
   FeedbackDetailAddCommentCardComponent
 } from './pages/feedback-detail/feedback-detail-add-comment-card/feedback-detail-add-comment-card.component';
 import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.component';
+import {RoadmapComponent} from './pages/roadmap/roadmap.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.compone
     FeedbackDetailCommentComponent,
     FeedbackDetailAddCommentCardComponent,
 
-    FeedbackFormComponent
+    FeedbackFormComponent,
+
+    RoadmapComponent
   ],
   imports: [
     BrowserModule,

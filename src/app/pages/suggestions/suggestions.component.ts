@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductRequest} from '../../../data/model/product-request';
-import {productRequestsMock} from '../../../data/product-requests-mock';
 import {SuggestionSortOptions} from './suggestion-sort-options';
-import {MenuController} from '@ionic/angular';
 import {ProductRequestService} from '../../../data/product-request.service';
+import {statuses} from '../../../data/model/statuses';
 
 @Component({
   selector: 'app-suggestions',
@@ -40,23 +39,11 @@ export class SuggestionsComponent implements OnInit {
   }
 
   get statuses() {
-   return [
-      {
-        name: 'Planned',
-        color: '#F49F85',
-        amount: this.productRequests.filter(x => x.status === 'planned').length
-      },
-      {
-        name: 'In-Progress',
-        color: '#AD1FEA',
-        amount: this.productRequests.filter(x => x.status === 'in-progress').length
-      },
-      {
-        name: 'Live',
-        color: '#62BCFA',
-        amount: this.productRequests.filter(x => x.status === 'live').length
-      },
-    ]
+    return statuses.map(x => ({
+      ...x,
+      amount: this.productRequests.filter(y =>
+        y.status === x.name.toLowerCase()).length
+    }));
   }
 
   constructor(private productRequestService: ProductRequestService) {

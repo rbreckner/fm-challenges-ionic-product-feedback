@@ -1,6 +1,12 @@
-<ion-card [routerLink]="['/feedback/detail', productRequest?.id]">
+<ion-card [routerLink]="['/feedback/detail', productRequest?.id]"
+          [class.card-status]="showStatus" [style.--status-color]="statusColor">
   <ion-card-content class="p-24">
-    <div class="card-title">
+    <div *ngIf="showStatus"
+         class="mb-14">
+      <div class="bullet" [style.--color]="statusColor"></div>
+      {{productRequest?.status}}
+    </div>
+    <div class="app-title">
       {{productRequest?.title}}
     </div>
     <p>

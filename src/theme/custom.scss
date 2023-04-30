@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
 
+p {
+  color: var(--app-color-body);
+}
+
 app-root {
   --ion-font-family: 'Jost';
   font-size: var(--app-font-size-body);
@@ -56,15 +60,15 @@ ion-card {
       font-size: var(--app-font-size-body);
     }
   }
+}
 
-  .card-title {
-    font-size: var(--app-font-size-body);
-    font-weight: 700;
-    color: var(--app-color-heading);
+.app-title {
+  font-size: var(--app-font-size-body);
+  font-weight: 700;
+  color: var(--app-color-heading);
 
-    &__large {
-      font-size: 18px;
-    }
+  &__large {
+    font-size: 18px;
   }
 }
 
@@ -166,6 +170,20 @@ ion-select.legacy-select {
   }
 }
 
+ion-segment {
+  ion-segment-button {
+    text-transform: none;
+    font-weight: 700;
+    color: var(--ion-color-tertiary);
+    opacity: .4;
+    --indicator-height: 4px;
+
+    &.segment-button-checked {
+      opacity: 1;
+    }
+  }
+}
+
 
 .bullet {
   display: inline-block;
@@ -174,4 +192,8 @@ ion-select.legacy-select {
   border-radius: 8px;
   background-color: var(--color);
   margin-right: 16px;
+}
+
+.background-dark {
+  background-color: var(--app-color-dark-blue);
 }

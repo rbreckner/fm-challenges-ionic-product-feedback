@@ -2,17 +2,25 @@
 
   .form-container {
     position: relative;
-    padding-top: 27px;
+    padding-top: 20px;
 
     .form-circle {
       position: absolute;
       z-index: 10;
       top: 0;
       left: 24px;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 40px;
+      background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     ion-card {
-      padding-top: 27px;
+      padding-top: 20px;
     }
   }
 

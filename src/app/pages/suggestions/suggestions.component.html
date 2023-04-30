@@ -52,10 +52,11 @@
           <ion-row class="ion-justify-content-between ion-align-items-center"
                    style="margin-bottom: 14px;">
             <ion-col size="auto">
-              <div class="card-title card-title__large">Roadmap</div>
+              <div class="app-title card-title__large">Roadmap</div>
             </ion-col>
             <ion-col size="auto">
-              <ion-button class="button-link mr--14">
+              <ion-button class="button-link mr--14"
+                          routerLink="/roadmap">
                 View
               </ion-button>
             </ion-col>
@@ -81,7 +82,7 @@
 
   <div class="ion-page" id="main-content">
 
-    <ion-row class="ion-justify-content-between ion-align-items-center suggestion-nav">
+    <ion-row class="ion-justify-content-between ion-align-items-center background-dark suggestion-nav">
       <ion-col>
         <app-suggestion-sort (selected)="sortby = $event"></app-suggestion-sort>
       </ion-col>
@@ -95,11 +96,10 @@
 
     <ion-content>
       <app-suggestion-empty *ngIf="!productRequests?.length"></app-suggestion-empty>
-      <div style="display: grid">
         <app-product-request-card *ngFor="let item of filteredSuggestions"
+                                  class="mb-16"
                                   [productRequest]="item">
         </app-product-request-card>
-      </div>
     </ion-content>
   </div>
 

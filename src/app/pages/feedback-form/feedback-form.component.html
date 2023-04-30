@@ -8,35 +8,30 @@
 
   <div class="form-container mt-30">
     <div class="form-circle">
-      <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient cx="103.9%" cy="-10.387%" fx="103.9%" fy="-10.387%" r="166.816%" id="a">
-            <stop stop-color="#E84D70" offset="0%"/>
-            <stop stop-color="#A337F6" offset="53.089%"/>
-            <stop stop-color="#28A7ED" offset="100%"/>
-          </radialGradient>
-        </defs>
-        <g fill="none" fill-rule="evenodd">
-          <circle fill="url(#a)" cx="28" cy="28" r="28"/>
-          <path fill="#FFF" fill-rule="nonzero"
-                d="M30.343 36v-5.834h5.686v-4.302h-5.686V20h-4.597v5.864H20v4.302h5.746V36z"/>
-        </g>
+      <svg *ngIf="!productRequestId" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M7.67317 11.7142V7.54689H11.7353V4.47402H7.67317V0.285645H4.38983V4.47402H0.285645V7.54689H4.38983V11.7142H7.67317Z" fill="white"/>
+      </svg>
+      <svg *ngIf="productRequestId" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5268 2.46562L12.2569 0L17 4.44258L14.4162 7.04933L9.5268 2.46562ZM0 16.713C0.670424 13.9211 2.53903 6.78177 2.53903 6.78177L8.51239 3.36707L13.4871 7.89786L9.68639 13.4371L0.227908 17L4.71171 12.8991C5.471 13.1749 6.54344 12.9255 7.12318 12.3063C7.88852 11.4931 7.83109 10.23 6.99442 9.48554C6.15775 8.74109 4.79514 8.74109 4.0298 9.55434C3.45973 10.1606 3.26326 11.2302 3.5891 11.9353L0 16.713Z" fill="white"/>
       </svg>
     </div>
     <ion-card>
       <ion-card-content>
 
-        <div class="card-title card-title__large">Create New Feedback</div>
+        <div class="app-title card-title__large">
+          <ng-container *ngIf="!productRequestId">Create New Feedback</ng-container>
+          <ng-container *ngIf="productRequestId">Edit Feedback</ng-container>
+        </div>
 
         <form *ngIf="productRequestForm" [formGroup]="productRequestForm">
           <div class="mt-24">
-            <label class="card-title">Feedback Title</label>
+            <label class="app-title">Feedback Title</label>
             <p>Add a short, descriptive headline</p>
             <ion-input formControlName="title"></ion-input>
           </div>
 
           <div class="mt-24">
-            <label class="card-title">Category</label>
+            <label class="app-title">Category</label>
             <p>Choose a category for your feedback</p>
             <ion-select formControlName="category"
                         interface="popover"
@@ -50,16 +45,17 @@
           </div>
 
           <div class="mt-24">
-            <label class="card-title">Feedback Detail</label>
+            <label class="app-title">Feedback Detail</label>
             <p>Include any specific comments on what should be improved, added, etc.</p>
             <ion-textarea formControlName="description"></ion-textarea>
           </div>
         </form>
 
-        <ion-button class="mt-50"
+        <ion-button class="mt-40"
                     expand="block"
                     (click)="save()">
-          Add Feedback
+          <ng-container *ngIf="!productRequestId">Add Feedback</ng-container>
+          <ng-container *ngIf="productRequestId">Save Changes</ng-container>
         </ion-button>
 
         <ion-button class="mt-16"
@@ -67,6 +63,13 @@
                     color="tertiary"
                     routerLink="/">
           Cancel
+        </ion-button>
+
+        <ion-button class="mt-16"
+                    expand="block"
+                    color="danger"
+                    (click)="delete()">
+          Delete
         </ion-button>
 
       </ion-card-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductRequestService} from '../../../data/product-request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -7,9 +7,10 @@ import {ProductRequest} from '../../../data/model/product-request';
 @Component({
   selector: 'app-feedback-form',
   templateUrl: './feedback-form.component.html',
-  styleUrls: ['./feedback-form.component.scss'],
+  styleUrls: ['./feedback-form.component.scss']
 })
-export class FeedbackFormComponent  implements OnInit {
+export class FeedbackFormComponent implements OnInit {
+  productRequestId: number | null = null;
   productRequestForm: FormGroup | undefined;
   categories = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
@@ -19,6 +20,7 @@ export class FeedbackFormComponent  implements OnInit {
               private productRequestService: ProductRequestService) {
     const productRequestId = route.snapshot.params['id'];
     if (productRequestId) {
+      this.productRequestId = productRequestId;
       const productRequest = this.productRequestService.productRequest(Number(productRequestId));
       this.initializeForm(productRequest);
     } else {
@@ -27,7 +29,7 @@ export class FeedbackFormComponent  implements OnInit {
   }
 
   initializeForm(productRequest?: Partial<ProductRequest>) {
-    if(!productRequest) {
+    if (!productRequest) {
       productRequest = {title: '', category: '', description: ''};
     }
     this.productRequestForm = this.fb.group({
@@ -37,9 +39,14 @@ export class FeedbackFormComponent  implements OnInit {
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   save() {
+
+  }
+
+  delete() {
 
   }
 }

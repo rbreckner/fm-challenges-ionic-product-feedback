@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {SuggestionsComponent} from './pages/suggestions/suggestions.component';
 import {FeedbackDetailComponent} from './pages/feedback-detail/feedback-detail.component';
 import {FeedbackFormComponent} from './pages/feedback-form/feedback-form.component';
+import {RoadmapComponent} from './pages/roadmap/roadmap.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'feedback/edit/:id',
     component: FeedbackFormComponent
+  },
+  {
+    path: 'roadmap',
+    component: RoadmapComponent
   },
   {
     path: 'folder/:id',

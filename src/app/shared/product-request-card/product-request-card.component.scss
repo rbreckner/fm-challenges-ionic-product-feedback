@@ -2,8 +2,9 @@
   display: block;
 
   ion-card {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    &.card-status ion-card-content {
+      box-shadow: inset 0 6px var(--status-color);
+    }
 
     p {
       margin-top: 8px;
