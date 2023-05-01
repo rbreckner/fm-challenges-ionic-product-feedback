@@ -1,10 +1,10 @@
-<ion-card [routerLink]="['/feedback/detail', productRequest?.id]"
+<ion-card [routerLink]="['/feedback/detail', productRequest.id]"
           [class.card-status]="showStatus" [style.--status-color]="statusColor">
   <ion-card-content class="p-24 query-container">
     <div *ngIf="showStatus"
          class="mb-14">
       <div class="bullet" [style.--color]="statusColor"></div>
-      {{productRequest?.status}}
+      {{productRequest.status}}
     </div>
 
     <div class="hide-in-large-container">
@@ -12,11 +12,13 @@
 
       <ion-row class="mt-14 ion-justify-content-between ion-align-items-center">
         <ion-col size="auto">
-          <ion-chip color="secondary" class="chip-upvotes">
+          <ion-chip class="chip-upvotes"
+                    [class.active]="productRequest.userHasUpVoted"
+                    (click)="toggleUpVote($event)">
             <svg class="mr-10" width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
+              <path d="M1 6l4-4 4 4" class="chip-path" stroke-width="2" fill="none" fill-rule="evenodd"/>
             </svg>
-            {{productRequest?.upvotes}}
+            {{productRequest.upVotes}}
           </ion-chip>
         </ion-col>
         <ion-col size="auto">
@@ -28,15 +30,18 @@
     <div class="hide-in-small-container">
       <ion-row class="ion-justify-content-between ion-align-items-center">
         <ion-col size="auto" class="pl-16 pr-40">
-          <ion-chip color="secondary" class="chip-upvotes" style="height: auto;">
+          <ion-chip class="chip-upvotes"
+                    style="height: auto;"
+                    [class.active]="productRequest.userHasUpVoted"
+                    (click)="toggleUpVote($event)">
             <div style="display: block; width: 24px;"
                  class="ion-text-center">
               <div>
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
+                  <path d="M1 6l4-4 4 4" class="chip-path" stroke-width="2" fill="none" fill-rule="evenodd"/>
                 </svg>
               </div>
-              {{productRequest?.upvotes}}
+              {{productRequest.upVotes}}
             </div>
           </ion-chip>
         </ion-col>
@@ -55,12 +60,12 @@
 
 <ng-template #productRequestInfo>
   <div class="app-title">
-    {{productRequest?.title}}
+    {{productRequest.title}}
   </div>
   <p>
-    {{productRequest?.description}}
+    {{productRequest.description}}
   </p>
-  <ion-chip color="secondary">{{productRequest?.category}}</ion-chip>
+  <ion-chip color="secondary">{{productRequest.category}}</ion-chip>
 </ng-template>
 
 <ng-template #commentCountButton>

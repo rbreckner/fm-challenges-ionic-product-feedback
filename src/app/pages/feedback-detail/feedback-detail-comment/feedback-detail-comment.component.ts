@@ -8,8 +8,8 @@ import {Comment} from '../../../../data/comment/comment';
 })
 export class FeedbackDetailCommentComponent implements OnInit {
   @Input() comment: Comment | undefined;
-  @Input() replyTo: number | null = null;
-  @Output() replyClicked = new EventEmitter<number>();
+  @Input() replyTo: string | null = null;
+  @Output() replyClicked = new EventEmitter<string>();
   @Output() addComment = new EventEmitter<string>();
 
   constructor() {

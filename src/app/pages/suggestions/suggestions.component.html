@@ -38,7 +38,7 @@
             (ionWillClose)="menuOpen = false">
 
     <ion-content class="pt-0">
-      <div class="hide-lg-down">
+      <div class="ion-hide-lg-down mt-24">
         <ng-container *ngTemplateOutlet="headerCard"></ng-container>
       </div>
       <app-suggestions-category-filter-card class="mt-24"
@@ -79,7 +79,7 @@
       </div>
 
       <app-suggestions-empty *ngIf="!(suggestions$ | async)?.length"></app-suggestions-empty>
-      <app-product-request-card *ngFor="let item of suggestions$ | async"
+      <app-product-request-card *ngFor="let item of suggestions$ | async; trackBy:trackById"
                                 class="mb-16"
                                 [productRequest]="item">
       </app-product-request-card>

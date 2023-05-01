@@ -1,12 +1,12 @@
 <ion-row>
   <ion-col size="auto">
     <ion-avatar>
-      <img [src]="comment?.user?.image"/>
+      <img [src]="comment?.createdBy?.image"/>
     </ion-avatar>
   </ion-col>
   <ion-col>
-    <div class="app-title">{{comment?.user?.name}}</div>
-    <small>@{{comment?.user?.username}}</small>
+    <div class="app-title">{{comment?.createdBy?.name}}</div>
+    <small>@{{comment?.createdBy?.username}}</small>
   </ion-col>
   <ion-col size="auto">
     <ion-button class="button-link"
@@ -18,19 +18,18 @@
 
 <div class="comment-container">
   <p>
-    <ion-text *ngIf="comment?.replyToUserName as userName"
+    <ion-text *ngIf="comment?.replyToUser?.username as userName"
               color="primary" bo>
       <strong>@{{userName}}</strong>
     </ion-text>
     {{comment?.content}}
   </p>
-  <app-feedback-detail-add-reply *ngIf="comment?.id === replyTo"
-                                 (addComment)="addComment.emit($event)">
-
-  </app-feedback-detail-add-reply>
+<!--  <app-feedback-detail-add-reply *ngIf="comment?.id === replyTo"-->
+<!--                                 (addComment)="addComment.emit($event)">-->
+<!--  </app-feedback-detail-add-reply>-->
 </div>
 
-<div class="ion-padding-start">
+<div class="pl-50">
   <app-feedback-detail-comment *ngFor="let reply of comment?.replies"
                                class="comment-reply"
                                [comment]="reply"
@@ -38,4 +37,10 @@
                                (replyClicked)="replyClicked.emit($event)"
                                (addComment)="addComment.emit($event)">
   </app-feedback-detail-comment>
+</div>
+
+<div class="comment-container">
+  <app-feedback-detail-add-reply *ngIf="comment?.id === replyTo"
+                                 (addComment)="addComment.emit($event)">
+  </app-feedback-detail-add-reply>
 </div>

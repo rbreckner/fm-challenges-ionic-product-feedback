@@ -1,10 +1,16 @@
-import {User} from '../model/user';
+import {User} from '../user/user';
 
 export interface Comment {
-  id: number
-  content: string
-  user: User,
+  id: string;
+  productRequestId: string;
+  content: string;
+  createdById: string;
+
+  createdBy?: User;
+
+  replyIds?: string[];
   replies?: Comment[];
-  replyToCommentId?: number;
-  replyToUserName?: string;
+
+  replyToCommentId?: string;
+  replyToUser?: User;
 }

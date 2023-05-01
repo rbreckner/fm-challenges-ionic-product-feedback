@@ -13,6 +13,10 @@
     margin-top: var(--app-header-height);
     --width: 271px;
 
+    ion-content {
+      --padding-top: 0;
+    }
+
     @include for-desktop-up {
       margin-top: 50px;
 
@@ -49,7 +53,7 @@
     background: var(--app-gradient-header);
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: flex-end;
     color: var(--ion-color-light);
   }
 

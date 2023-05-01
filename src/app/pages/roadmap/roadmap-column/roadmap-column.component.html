@@ -3,7 +3,7 @@
 </div>
 <p class="mt-4 mb-24 overflow-ellipsis">{{status?.description}}</p>
 
-<app-product-request-card *ngFor="let productRequest of status?.productRequests"
+<app-product-request-card *ngFor="let productRequest of status?.productRequests; trackBy:trackById"
                           class="mb-16"
                           [productRequest]=productRequest
                           [showStatus]="true">

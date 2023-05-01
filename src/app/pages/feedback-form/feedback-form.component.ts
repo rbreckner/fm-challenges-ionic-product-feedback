@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductRequestService} from '../../../data/product-request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProductRequest} from '../../../data/product-request/product-request';
-import { statuses } from 'src/data/model/statuses';
+import {statuses} from 'src/data/model/statuses';
+import {ProductRequestRepository} from '../../../data/product-request/product-request.repository';
 
 @Component({
   selector: 'app-feedback-form',
@@ -11,8 +11,8 @@ import { statuses } from 'src/data/model/statuses';
   styleUrls: ['./feedback-form.component.scss']
 })
 export class FeedbackFormComponent implements OnInit {
-  productRequestId: number | null = null;
-  productRequestForm: FormGroup | undefined;
+  productRequestId: string | null = null;
+  form: FormGroup = this.buildForm();
   categories = ['UI', 'UX', 'Enhancement', 'Bug', 'Feature']
   statuses = [
     {
@@ -24,23 +24,20 @@ export class FeedbackFormComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder,
-              private productRequestService: ProductRequestService) {
+              private productRequestRepo: ProductRequestRepository) {
     const productRequestId = route.snapshot.params['id'];
     if (productRequestId) {
       this.productRequestId = productRequestId;
-      const productRequest = this.productRequestService.productRequest(Number(productRequestId));
-      this.initializeForm(productRequest);
-    } else {
-      this.initializeForm();
+      const productRequest = this.productRequestRepo.getProductRequest(productRequestId);
+      this.form = this.buildForm(productRequest);
     }
   }
 
-  initializeForm(productRequest?: Partial<ProductRequest>) {
+  buildForm(productRequest?: Partial<ProductRequest>) {
     if (!productRequest) {
-      productRequest = {title: '', category: '', description: '', status: 'suggestion'};
+      productRequest = {title: '', category: '', description: '', status: 'Suggestion'};
     }
-    console.log(productRequest);
-    this.productRequestForm = this.fb.group({
+    return this.fb.group({
       title: [productRequest.title, Validators.required],
       category: [productRequest.category],
       description: [productRequest.description],
@@ -52,7 +49,12 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   save() {
-
+    if (this.productRequestId) {
+      this.productRequestRepo.update(this.productRequestId, this.form.value);
+    } else {
+      this.productRequestRepo.add(this.form.value);
+    }
+    this.router.navigate(['/']);
   }
 
   delete() {

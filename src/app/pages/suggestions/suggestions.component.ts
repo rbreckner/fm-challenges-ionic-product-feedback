@@ -1,11 +1,11 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {ProductRequest} from '../../../data/product-request/product-request';
-import {SuggestionSortOptions} from './suggestion-sort-options';
-import {ProductRequestService} from '../../../data/product-request.service';
-import {Status, statuses} from '../../../data/model/statuses';
-import {Platform} from '@ionic/angular';
-import {ProductRequestRepository} from '../../../data/product-request/product-request.repository';
+import {MenuController, Platform} from '@ionic/angular';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
+
+import {SuggestionSortOptions} from './suggestion-sort-options';
+import {ProductRequestRepository} from '../../../data/product-request/product-request.repository';
+import {ProductRequest} from '../../../data/product-request/product-request';
+import {productRequestsMock} from '../../../data/mock-data';
 
 const DESKTOP_BREAKPOINT = 992
 
@@ -15,22 +15,18 @@ const DESKTOP_BREAKPOINT = 992
   styleUrls: ['./suggestions.component.scss']
 })
 export class SuggestionsComponent implements OnInit {
-  displayIsDesktop = false;
+  trackById = (obj: any) => obj.id;
 
+  displayIsDesktop = false;
   menuOpen = false;
 
-  categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
-
-  // productRequests: ProductRequest[];
-  //
-  // // sortby: SuggestionSortOptions = SuggestionSortOptions.MostUpvotes;
-  // // selectedCategory = 'All';
+  categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
 
   sortBy$ = new BehaviorSubject(SuggestionSortOptions.MostUpvotes);
   categoryFilter$ = new BehaviorSubject('All')
 
   suggestions$ = combineLatest([
-    this.productRequestRepo.getSuggestions(),
+    this.productRequestRepo.selectSuggestions(),
     this.categoryFilter$,
     this.sortBy$
   ]).pipe(map(([productRequests, categoryFilter, sortBy]) => {
@@ -38,9 +34,9 @@ export class SuggestionsComponent implements OnInit {
       .filter(x => categoryFilter === 'All' || categoryFilter === x.category)
       .sort((a, b) => {
         if (sortBy === SuggestionSortOptions.MostUpvotes) {
-          return b.upvotes - a.upvotes;
+          return b.upVotes - a.upVotes;
         } else if (sortBy === SuggestionSortOptions.LeastUpvotes) {
-          return a.upvotes - b.upvotes;
+          return a.upVotes - b.upVotes;
         } else if (sortBy === SuggestionSortOptions.MostComments) {
           return (b.comments ? b.comments.length : 0) - (a.comments ? a.comments.length : 0);
         } else if (sortBy === SuggestionSortOptions.LeastComments) {
@@ -50,9 +46,10 @@ export class SuggestionsComponent implements OnInit {
       })
   }))
 
-  mappedStatuses$ = this.productRequestRepo.getMappedStatuses();
+  mappedStatuses$ = this.productRequestRepo.selectMappedStatuses();
 
   constructor(private platform: Platform,
+              private menuController: MenuController,
               private productRequestRepo: ProductRequestRepository) {
     this.platform.ready().then(() => {
       this.setDisplayIsDesktopProperty(this.platform.width());
@@ -61,6 +58,7 @@ export class SuggestionsComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   windowResize(event: any) {
+    this.menuController.close();
     this.setDisplayIsDesktopProperty(event.target.innerWidth);
   }
 

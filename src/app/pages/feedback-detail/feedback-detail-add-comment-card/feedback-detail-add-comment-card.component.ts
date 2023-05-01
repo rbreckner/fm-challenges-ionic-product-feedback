@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-feedback-detail-add-comment-card',
@@ -13,4 +13,9 @@ export class FeedbackDetailAddCommentCardComponent {
   }
 
   @Output() addComment = new EventEmitter<string>();
+
+  onAddComment() {
+    this.addComment.emit(this.newComment);
+    this.newComment = '';
+  }
 }

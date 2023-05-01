@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content *ngIf="(productRequest$ | async)! as productRequest">
   <div class="container-730">
     <ion-row class="ion-justify-content-between">
       <ion-col size="auto">
@@ -25,19 +25,19 @@
     <ion-card class="mt-24">
       <ion-card-content>
         <div class="app-title app-title__large">
-          {{commentAmount}} Comments
+          {{productRequest.comments?.length}} Comments
         </div>
         <app-feedback-detail-comment *ngFor="let comment of productRequest?.comments"
                                      [comment]="comment"
                                      [replyTo]="replyTo"
                                      (replyClicked)="replyTo = $event"
-                                     (addComment)="addReply($event)">
+                                     (addComment)="addComment(productRequest.id, $event, replyTo!)">
         </app-feedback-detail-comment>
       </ion-card-content>
     </ion-card>
 
     <app-feedback-detail-add-comment-card class="mt-24"
-                                          (addComment)="addComment($event)">
+                                          (addComment)="addComment(productRequest.id, $event)">
     </app-feedback-detail-add-comment-card>
 
   </div>

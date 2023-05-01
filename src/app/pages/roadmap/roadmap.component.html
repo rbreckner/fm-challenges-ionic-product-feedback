@@ -3,7 +3,8 @@
     <ng-container *ngTemplateOutlet="header"></ng-container>
   </div>
   <ion-segment class="ion-hide-md-up"
-               [(ngModel)]="selectedStatusValue">
+               [value]="(selectedStatusValue$ | async)!"
+               (ionChange)="statusSelected($event)">
     <ion-segment-button *ngFor="let status of statuses"
                         [value]="status.name"
                         [style.--color-checked]="status.color">
@@ -14,13 +15,13 @@
 
 <ion-content>
   <app-roadmap-column class="ion-hide-md-up"
-                      [status]="selectedStatus">
+                      [status]="(selectedStatus$ | async)!">
   </app-roadmap-column>
 
   <div class="ion-hide-md-down container-1100">
     <ng-container *ngTemplateOutlet="header"></ng-container>
     <ion-row class="mx--5">
-      <ion-col *ngFor="let status of mappedStatuses"
+      <ion-col *ngFor="let status of (mappedStatuses$ | async)!;trackBy:trackById"
                size="4"
                class="px-5">
         <app-roadmap-column [status]="status"></app-roadmap-column>

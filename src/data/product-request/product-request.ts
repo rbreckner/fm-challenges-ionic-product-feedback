@@ -1,12 +1,14 @@
 import {Comment} from '../comment/comment';
 
 export interface ProductRequest {
-  id: number
-  title: string
-  category: string
-  upvotes: number
-  status: string
-  description: string
+  id: string;
+  title: string;
+  category: string;
+  upVotes: number;
+  userHasUpVoted: boolean;
+  status: string;
+  description: string;
 
-  comments: Comment[]
+  commentIds?: string[];
+  comments?: Comment[];
 }

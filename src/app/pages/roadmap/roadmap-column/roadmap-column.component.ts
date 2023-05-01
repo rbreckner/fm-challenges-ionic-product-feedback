@@ -8,6 +8,8 @@ import {ProductRequest} from '../../../../data/product-request/product-request';
   styleUrls: ['./roadmap-column.component.scss']
 })
 export class RoadmapColumnComponent implements OnInit {
+  trackById = (obj: any) => obj.id;
+
   @Input() status: Status | undefined;
   @Input() productRequests: ProductRequest[] = [];
 

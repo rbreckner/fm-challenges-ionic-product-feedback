@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductRequestService} from '../../../data/product-request.service';
-import {ProductRequest} from '../../../data/product-request/product-request';
-import {Status, statuses} from '../../../data/model/statuses';
+import {BehaviorSubject, combineLatest, map} from 'rxjs';
+
+import {statuses} from '../../../data/model/statuses';
+import {ProductRequestRepository} from '../../../data/product-request/product-request.repository';
+
 
 @Component({
   selector: 'app-roadmap',
@@ -9,28 +11,31 @@ import {Status, statuses} from '../../../data/model/statuses';
   styleUrls: ['./roadmap.component.scss']
 })
 export class RoadmapComponent implements OnInit {
+  trackById = (obj: any) => obj.id;
+
   statuses = statuses;
-  productRequests: ProductRequest[];
+  selectedStatusValue$ = new BehaviorSubject('In-Progress');
+  mappedStatuses$ = this.productRequestRepo.selectMappedStatuses();
+  selectedStatus$ = combineLatest([
+    this.productRequestRepo.selectMappedStatuses(),
+    this.selectedStatusValue$
+  ]).pipe(
+    map(([statuses, selectedStatusValue]) => {
+      return statuses.find(x => x.name === selectedStatusValue)
+    })
+  );
 
-  selectedStatusValue = 'In-Progress';
-
-  get mappedStatuses(): Status[] {
-    return statuses.map(x => ({
-      ...x,
-      productRequests: this.productRequests.filter(y =>
-        y.status === x.name)
-    }));
-  }
-
-  get selectedStatus(): Status | undefined {
-    return this.mappedStatuses.find(x => x.name === this.selectedStatusValue);
-  }
-
-  constructor(private productRequestService: ProductRequestService) {
-    this.productRequests = productRequestService.productRequests;
+  constructor(private productRequestRepo: ProductRequestRepository) {
   }
 
   ngOnInit() {
   }
 
+  log($event: any) {
+    console.log($event);
+  }
+
+  statusSelected(event: any) {
+    this.selectedStatusValue$.next(event.detail.value);
+  }
 }

@@ -99,6 +99,10 @@ ion-chip {
   --background: rgba(var(--ion-color-secondary-rgb), 0.08);
   --color: var(--ion-color-secondary);
 
+  &:hover {
+    --background: #CFD7FF;
+  }
+
   &.active {
     --background: var(--ion-color-secondary);
     --color: var(--ion-color-secondary-contrast);
@@ -252,8 +256,3 @@ $containerWidths: (540, 730, 1100, 1150);
     display: none;
   }
 }
-
-
-
-
-
