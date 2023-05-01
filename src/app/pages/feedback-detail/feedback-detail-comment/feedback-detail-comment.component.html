@@ -9,22 +9,33 @@
     <small>@{{comment?.user?.username}}</small>
   </ion-col>
   <ion-col size="auto">
-    <ion-button class="button-link">
+    <ion-button class="button-link"
+                (click)="replyClicked.emit(comment?.id)">
       Reply
     </ion-button>
   </ion-col>
 </ion-row>
-<p>
-  <ion-text *ngIf="comment?.replyToUserName as userName"
-            color="primary" bo>
-    <strong>@{{userName}}</strong>
-  </ion-text>
-  {{comment?.content}}
-</p>
+
+<div class="comment-container">
+  <p>
+    <ion-text *ngIf="comment?.replyToUserName as userName"
+              color="primary" bo>
+      <strong>@{{userName}}</strong>
+    </ion-text>
+    {{comment?.content}}
+  </p>
+  <app-feedback-detail-add-reply *ngIf="comment?.id === replyTo"
+                                 (addComment)="addComment.emit($event)">
+
+  </app-feedback-detail-add-reply>
+</div>
 
 <div class="ion-padding-start">
   <app-feedback-detail-comment *ngFor="let reply of comment?.replies"
                                class="comment-reply"
-                               [comment]="reply">
+                               [comment]="reply"
+                               [replyTo]="replyTo"
+                               (replyClicked)="replyClicked.emit($event)"
+                               (addComment)="addComment.emit($event)">
   </app-feedback-detail-comment>
 </div>

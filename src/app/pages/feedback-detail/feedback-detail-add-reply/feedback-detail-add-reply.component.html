@@ -1,0 +1,18 @@
+<ion-row class="mt-24">
+  <ion-col>
+    <ion-textarea placeholder="Type your comment here"
+                  rows="2"
+                  maxlength="250"
+                  [autoGrow]="true"
+                  [(ngModel)]="newReply">
+    </ion-textarea>
+  </ion-col>
+  <ion-col size="auto" class="column-post-comment pl-16">
+    <ion-button (click)="addComment.emit(newReply)">
+      Post Comment
+    </ion-button>
+    <div style="margin-top: auto;">
+      {{newCommentCharsLeft}} Characters left
+    </div>
+  </ion-col>
+</ion-row>

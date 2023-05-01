@@ -1,39 +1,44 @@
 <ion-content>
-  <ion-row class="ion-justify-content-between">
-    <ion-col size="auto">
-      <!--      <ion-back-button></ion-back-button>-->
-      <ion-button fill="clear" color="medium" routerLink="/">
-        <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 9L2 5l4-4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
-        </svg>
-        Go Back
-      </ion-button>
-    </ion-col>
-    <ion-col size="auto">
-      <ion-button color="secondary"
-                  [routerLink]="['/feedback/edit', productRequest?.id]">
-        Edit Feedback
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <div class="container-730">
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="auto">
+        <!--      <ion-back-button></ion-back-button>-->
+        <ion-button fill="clear" color="medium" routerLink="/">
+          <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 9L2 5l4-4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/>
+          </svg>
+          Go Back
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button color="secondary"
+                    [routerLink]="['/feedback/edit', productRequest?.id]">
+          Edit Feedback
+        </ion-button>
+      </ion-col>
+    </ion-row>
 
-  <app-product-request-card class="mt-24"
-                            [productRequest]=productRequest>
-  </app-product-request-card>
+    <app-product-request-card class="mt-24"
+                              [productRequest]=productRequest>
+    </app-product-request-card>
 
-  <ion-card class="mt-24">
-    <ion-card-content>
-      <div class="app-title card-title__large">
-        {{commentAmount}} Comments
-      </div>
-      <app-feedback-detail-comment *ngFor="let comment of productRequest?.comments"
-                                   [comment]="comment">
-      </app-feedback-detail-comment>
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="mt-24">
+      <ion-card-content>
+        <div class="app-title app-title__large">
+          {{commentAmount}} Comments
+        </div>
+        <app-feedback-detail-comment *ngFor="let comment of productRequest?.comments"
+                                     [comment]="comment"
+                                     [replyTo]="replyTo"
+                                     (replyClicked)="replyTo = $event"
+                                     (addComment)="addReply($event)">
+        </app-feedback-detail-comment>
+      </ion-card-content>
+    </ion-card>
 
-  <app-feedback-detail-add-comment-card class="mt-24"
-                                        (addComment)="addComment($event)">
-  </app-feedback-detail-add-comment-card>
+    <app-feedback-detail-add-comment-card class="mt-24"
+                                          (addComment)="addComment($event)">
+    </app-feedback-detail-add-comment-card>
 
+  </div>
 </ion-content>

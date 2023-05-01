@@ -11,6 +11,7 @@ app-root {
 }
 
 ion-app {
+  color-scheme: light;
   background-color: var(--app-color-background);
 }
 
@@ -227,10 +228,13 @@ ion-segment {
   }
 }
 
-.container-small {
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
+$containerWidths: (540, 730, 1100, 1150);
+@each $containerWidth in $containerWidths {
+  .container-#{$containerWidth} {
+    max-width: #{$containerWidth}px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .query-container {

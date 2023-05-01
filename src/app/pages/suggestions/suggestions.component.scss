@@ -1,9 +1,26 @@
 @import "../../../theme/mixins";
 
 :host {
+  ion-split-pane {
+    background-color: var(--app-color-background);
+    @include for-desktop-up {
+      --border: none;
+      --side-max-width: 255px;
+    }
+  }
+
   ion-menu {
     margin-top: var(--app-header-height);
     --width: 271px;
+
+    @include for-desktop-up {
+      margin-top: 50px;
+
+      ion-content {
+        --padding-start: 0;
+        --padding-end: 0;
+      }
+    }
   }
 
   .mobile-header {

@@ -1,5 +1,5 @@
 <ion-header>
-  <div class="ion-hide-md-up">
+  <div class="ion-hide-md-up container-1100">
     <ng-container *ngTemplateOutlet="header"></ng-container>
   </div>
   <ion-segment class="ion-hide-md-up"
@@ -17,17 +17,15 @@
                       [status]="selectedStatus">
   </app-roadmap-column>
 
-  <div class="ion-hide-md-down">
+  <div class="ion-hide-md-down container-1100">
     <ng-container *ngTemplateOutlet="header"></ng-container>
-    <ion-grid>
-      <ion-row class="mx--5">
-        <ion-col *ngFor="let status of mappedStatuses"
-                 size="4"
-                 class="px-5">
-          <app-roadmap-column [status]="status"></app-roadmap-column>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-row class="mx--5">
+      <ion-col *ngFor="let status of mappedStatuses"
+               size="4"
+               class="px-5">
+        <app-roadmap-column [status]="status"></app-roadmap-column>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>
 

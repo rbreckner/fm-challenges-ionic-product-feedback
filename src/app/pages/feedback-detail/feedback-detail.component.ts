@@ -12,6 +12,9 @@ export class FeedbackDetailComponent implements OnInit {
   productRequest: ProductRequest | undefined;
   commentAmount = 0;
 
+  replyTo: number | null = null;
+
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private productRequestService: ProductRequestService) {
@@ -23,12 +26,19 @@ export class FeedbackDetailComponent implements OnInit {
       //todo not found probably better!
       this.router.navigate(['/']);
     }
+
+    (window as any)['feedbackdetail'] = this;
   }
 
   ngOnInit() {
   }
 
-  addComment(comment: string) {
-    console.log('addComment not implemented', comment);
+  addComment(content: string) {
+    console.log('addComment not implemented', content);
+  }
+
+  addReply(content: string) {
+    console.log('addReply not implemented', content);
+    this.replyTo = null;
   }
 }

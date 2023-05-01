@@ -29,21 +29,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-split-pane contentId="main-content">
+<ion-split-pane contentId="main-content" class="container-1150 pl-30">
   <ion-menu contentId="main-content"
             type="overlay"
-            side="end"
+            [side]="displayIsDesktop ? 'start' : 'end'"
+
             (ionWillOpen)="menuOpen = true"
             (ionWillClose)="menuOpen = false">
 
-    <ion-content>
-      <app-suggestions-category-filter-card class="mb-24"
+    <ion-content class="pt-0">
+      <div class="hide-lg-down">
+        <ng-container *ngTemplateOutlet="headerCard"></ng-container>
+      </div>
+      <app-suggestions-category-filter-card class="mt-24"
                                             [categories]="categories"
                                             [selectedCategory]="selectedCategory"
                                             (categorySelected)="selectedCategory = $event">
       </app-suggestions-category-filter-card>
-      <app-suggestions-roadmap-card [statuses]="mappedStatuses"
-                                    class="mt-24">
+      <app-suggestions-roadmap-card class="mt-24"
+                                    [statuses]="mappedStatuses">
       </app-suggestions-roadmap-card>
     </ion-content>
   </ion-menu>
@@ -57,14 +61,9 @@
     <ion-content>
 
       <div class="ion-hide-md-down mt-50">
-        <ion-row class="ion-hide-md-down mb-40 stretch-cards mx--5">
+        <ion-row class="ion-hide-lg-up mb-40 stretch-cards mx--5">
           <ion-col size="4" class="px-5">
-            <ion-card class="card-header">
-              <ion-card-content>
-                <div><strong>Frontend Mentor</strong></div>
-                <div>Feedback Board</div>
-              </ion-card-content>
-            </ion-card>
+            <ng-container *ngTemplateOutlet="headerCard"></ng-container>
           </ion-col>
           <ion-col size="4" class="px-5">
             <app-suggestions-category-filter-card [categories]="categories"
@@ -89,6 +88,15 @@
 
 </ion-split-pane>
 
+
+<ng-template #headerCard>
+  <ion-card class="card-header">
+    <ion-card-content>
+      <div><strong>Frontend Mentor</strong></div>
+      <div>Feedback Board</div>
+    </ion-card-content>
+  </ion-card>
+</ng-template>
 
 <ng-template #suggestionNav>
   <ion-row class="ion-justify-content-between ion-align-items-center header-dark-adaptive px-24 py-8">

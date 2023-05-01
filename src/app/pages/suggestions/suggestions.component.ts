@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductRequest} from '../../../data/model/product-request';
 import {SuggestionSortOptions} from './suggestion-sort-options';
 import {ProductRequestService} from '../../../data/product-request.service';
 import {Status, statuses} from '../../../data/model/statuses';
+import {Platform} from '@ionic/angular';
+
+const DESKTOP_BREAKPOINT = 992
 
 @Component({
   selector: 'app-suggestions',
@@ -10,6 +13,8 @@ import {Status, statuses} from '../../../data/model/statuses';
   styleUrls: ['./suggestions.component.scss']
 })
 export class SuggestionsComponent implements OnInit {
+  displayIsDesktop = false;
+
   menuOpen = false;
 
   categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
@@ -46,8 +51,22 @@ export class SuggestionsComponent implements OnInit {
     }));
   }
 
-  constructor(private productRequestService: ProductRequestService) {
+  constructor(private productRequestService: ProductRequestService,
+              private platform: Platform) {
     this.productRequests = this.productRequestService.productRequests;
+    this.platform.ready().then(() => {
+      this.setDisplayIsDesktopProperty(this.platform.width());
+    })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  windowResize(event: any) {
+    console.log(event)
+    this.setDisplayIsDesktopProperty(event.target.innerWidth);
+  }
+
+  setDisplayIsDesktopProperty(width: number) {
+    this.displayIsDesktop = width > DESKTOP_BREAKPOINT;
   }
 
   ngOnInit() {

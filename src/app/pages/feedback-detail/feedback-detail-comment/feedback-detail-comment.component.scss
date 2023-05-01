@@ -1,7 +1,15 @@
+@import '../../../../theme/mixins';
+
 :host {
   display: block;
 
   padding-top: var(--app-default-spacing);
+
+  @include for-tablet-up {
+    .comment-container {
+      padding-left: 56px;
+    }
+  }
 
   ion-avatar {
     width: 40px;
