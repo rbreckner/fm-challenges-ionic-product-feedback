@@ -1,0 +1,10 @@
+<div class="app-title app-title__large">
+  {{status?.name}} ({{status?.productRequests?.length}})
+</div>
+<p class="mt-4 mb-24 overflow-ellipsis">{{status?.description}}</p>
+
+<app-product-request-card *ngFor="let productRequest of status?.productRequests"
+                          class="mb-16"
+                          [productRequest]=productRequest
+                          [showStatus]="true">
+</app-product-request-card>

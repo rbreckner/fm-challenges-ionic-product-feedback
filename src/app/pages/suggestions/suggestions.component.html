@@ -42,7 +42,7 @@
                                             [selectedCategory]="selectedCategory"
                                             (categorySelected)="selectedCategory = $event">
       </app-suggestions-category-filter-card>
-      <app-suggestions-roadmap-card [statuses]="statuses"
+      <app-suggestions-roadmap-card [statuses]="mappedStatuses"
                                     class="mt-24">
       </app-suggestions-roadmap-card>
     </ion-content>
@@ -57,7 +57,7 @@
     <ion-content>
 
       <div class="ion-hide-md-down mt-50">
-        <ion-row class="ion-hide-md-down mb-40 stretch-cards">
+        <ion-row class="ion-hide-md-down mb-40 stretch-cards mx--5">
           <ion-col size="4" class="px-5">
             <ion-card class="card-header">
               <ion-card-content>
@@ -73,7 +73,7 @@
             </app-suggestions-category-filter-card>
           </ion-col>
           <ion-col size="4" class="px-5">
-            <app-suggestions-roadmap-card [statuses]="statuses"></app-suggestions-roadmap-card>
+            <app-suggestions-roadmap-card [statuses]="mappedStatuses"></app-suggestions-roadmap-card>
           </ion-col>
         </ion-row>
         <ng-container *ngTemplateOutlet="suggestionNav"></ng-container>
@@ -91,7 +91,7 @@
 
 
 <ng-template #suggestionNav>
-  <ion-row class="ion-justify-content-between ion-align-items-center background-dark suggestion-nav">
+  <ion-row class="ion-justify-content-between ion-align-items-center header-dark-adaptive px-24 py-8">
     <ion-col size="auto" class="ion-hide-md-down pr-16">
       <svg width="23" height="24" xmlns="http://www.w3.org/2000/svg">
         <path

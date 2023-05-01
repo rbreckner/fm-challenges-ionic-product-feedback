@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ProductRequest} from '../../../data/model/product-request';
 import {SuggestionSortOptions} from './suggestion-sort-options';
 import {ProductRequestService} from '../../../data/product-request.service';
-import {statuses} from '../../../data/model/statuses';
+import {Status, statuses} from '../../../data/model/statuses';
 
 @Component({
   selector: 'app-suggestions',
@@ -38,11 +38,11 @@ export class SuggestionsComponent implements OnInit {
       })
   }
 
-  get statuses() {
+  get mappedStatuses(): Status[] {
     return statuses.map(x => ({
       ...x,
-      amount: this.productRequests.filter(y =>
-        y.status === x.name.toLowerCase()).length
+      productRequests: this.productRequests.filter(y =>
+        y.status === x.name.toLowerCase())
     }));
   }
 

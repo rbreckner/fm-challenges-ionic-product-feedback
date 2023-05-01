@@ -14,12 +14,16 @@ export class RoadmapComponent implements OnInit {
 
   selectedStatusValue = 'In-Progress';
 
-  get selectedStatus(): Status | undefined {
-    return statuses.find(x => x.name === this.selectedStatusValue);
+  get mappedStatuses(): Status[] {
+    return statuses.map(x => ({
+      ...x,
+      productRequests: this.productRequests.filter(y =>
+        y.status === x.name.toLowerCase())
+    }));
   }
 
-  get filteredRequests() {
-    return this.productRequests.filter(x => x.status === this.selectedStatusValue.toLowerCase());
+  get selectedStatus(): Status | undefined {
+    return this.mappedStatuses.find(x => x.name === this.selectedStatusValue);
   }
 
   constructor(private productRequestService: ProductRequestService) {

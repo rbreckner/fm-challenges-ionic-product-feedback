@@ -1,4 +1,4 @@
-$spaceAmounts: (-14, 4, 5, 10, 14, 16, 24, 30, 40, 50);
+$spaceAmounts: (-14, -5, 4, 5, 8, 10, 14, 16, 24, 30, 40, 50);
 $sides: (top, bottom, left, right);
 
 @each $space in $spaceAmounts {

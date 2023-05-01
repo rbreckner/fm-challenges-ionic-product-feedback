@@ -1,5 +1,38 @@
 <ion-header>
-  <ion-row class="ion-justify-content-between ion-align-items-center background-dark p-24">
+  <div class="ion-hide-md-up">
+    <ng-container *ngTemplateOutlet="header"></ng-container>
+  </div>
+  <ion-segment class="ion-hide-md-up"
+               [(ngModel)]="selectedStatusValue">
+    <ion-segment-button *ngFor="let status of statuses"
+                        [value]="status.name"
+                        [style.--color-checked]="status.color">
+      <ion-label>{{status.name}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <app-roadmap-column class="ion-hide-md-up"
+                      [status]="selectedStatus">
+  </app-roadmap-column>
+
+  <div class="ion-hide-md-down">
+    <ng-container *ngTemplateOutlet="header"></ng-container>
+    <ion-grid>
+      <ion-row class="mx--5">
+        <ion-col *ngFor="let status of mappedStatuses"
+                 size="4"
+                 class="px-5">
+          <app-roadmap-column [status]="status"></app-roadmap-column>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ng-template #header>
+  <ion-row class="ion-justify-content-between ion-align-items-center header-dark-adaptive p-24">
     <ion-col>
       <ion-button fill="clear" color="light" routerLink="/">
         <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
@@ -14,27 +47,4 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-segment [(ngModel)]="selectedStatusValue">
-    <ion-segment-button *ngFor="let status of statuses"
-                        [value]="status.name"
-                        [style.--color-checked]="status.color">
-      <ion-label>{{status.name}}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-</ion-header>
-
-<ion-content>
-  <div class="app-title app-title__large">
-    {{selectedStatusValue}} ({{filteredRequests.length}})
-  </div>
-  <p class="mt-4 mb-24">{{selectedStatus?.description}}</p>
-
-
-  <app-product-request-card *ngFor="let productRequest of filteredRequests"
-                            class="mb-16"
-                            [productRequest]=productRequest
-                            [showStatus]="true">
-  </app-product-request-card>
-
-
-</ion-content>
+</ng-template>

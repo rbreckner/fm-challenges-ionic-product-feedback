@@ -26,6 +26,7 @@ import {
 import {
   SuggestionsRoadmapCardComponent
 } from './pages/suggestions/suggestions-roadmap-card/suggestions-roadmap-card.component';
+import {RoadmapColumnComponent} from './pages/roadmap/roadmap-column/roadmap-column.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {
     FeedbackFormComponent,
 
     RoadmapComponent,
-    SuggestionsRoadmapCardComponent
+    SuggestionsRoadmapCardComponent,
+    RoadmapColumnComponent
   ],
   imports: [
     BrowserModule,

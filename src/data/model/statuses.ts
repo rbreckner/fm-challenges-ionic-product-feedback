@@ -1,9 +1,11 @@
+import {ProductRequest} from './product-request';
+
 export interface Status {
   name: string;
   description: string;
   color: string;
 
-  amount?: number;
+  productRequests?: ProductRequest[];
 }
 
 export const statuses: Status[] = [

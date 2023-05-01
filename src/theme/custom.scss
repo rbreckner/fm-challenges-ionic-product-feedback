@@ -210,8 +210,21 @@ ion-segment {
   margin-right: 16px;
 }
 
-.background-dark {
+.overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.header-dark-adaptive {
+  padding: 8px 24px;
   background-color: var(--app-color-dark-blue);
+  color: var(--ion-color-light);
+
+  @include for-tablet-up {
+    border-radius: var(--app-border-radius);
+    margin-bottom: var(--app-default-spacing);
+  }
 }
 
 .container-small {
