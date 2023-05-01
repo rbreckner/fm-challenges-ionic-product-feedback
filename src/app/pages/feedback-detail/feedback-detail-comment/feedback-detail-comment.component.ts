@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Comment} from '../../../../data/model/comment';
+import {Comment} from '../../../../data/comment/comment';
 
 @Component({
   selector: 'app-feedback-detail-comment',

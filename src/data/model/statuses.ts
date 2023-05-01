@@ -1,4 +1,4 @@
-import {ProductRequest} from './product-request';
+import {ProductRequest} from '../product-request/product-request';
 
 export interface Status {
   name: string;
@@ -12,21 +12,21 @@ export const statuses: Status[] = [
   // {
   //   name: 'Suggestion',
   //   description: '',
-  //   color: '',
+  //   color: ''
   // },
   {
     name: 'Planned',
     description: 'Ideas prioritized for research',
-    color: '#F49F85',
+    color: '#F49F85'
   },
   {
     name: 'In-Progress',
     description: 'Features currently being developed',
-    color: '#AD1FEA',
+    color: '#AD1FEA'
   },
   {
     name: 'Live',
     description: 'Released features',
-    color: '#62BCFA',
+    color: '#62BCFA'
   }
 ]

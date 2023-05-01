@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductRequestService} from '../../../data/product-request.service';
-import {ProductRequest} from '../../../data/model/product-request';
+import {ProductRequest} from '../../../data/product-request/product-request';
 import {Status, statuses} from '../../../data/model/statuses';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Status} from '../../../../data/model/statuses';
-import {ProductRequest} from '../../../../data/model/product-request';
+import {ProductRequest} from '../../../../data/product-request/product-request';
 
 @Component({
   selector: 'app-roadmap-column',

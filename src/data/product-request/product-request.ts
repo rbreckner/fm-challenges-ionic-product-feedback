@@ -1,4 +1,4 @@
-import {Comment} from './comment';
+import {Comment} from '../comment/comment';
 
 export interface ProductRequest {
   id: number
@@ -7,5 +7,6 @@ export interface ProductRequest {
   upvotes: number
   status: string
   description: string
+
   comments: Comment[]
 }

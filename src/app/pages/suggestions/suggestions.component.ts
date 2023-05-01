@@ -1,9 +1,11 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {ProductRequest} from '../../../data/model/product-request';
+import {ProductRequest} from '../../../data/product-request/product-request';
 import {SuggestionSortOptions} from './suggestion-sort-options';
 import {ProductRequestService} from '../../../data/product-request.service';
 import {Status, statuses} from '../../../data/model/statuses';
 import {Platform} from '@ionic/angular';
+import {ProductRequestRepository} from '../../../data/product-request/product-request.repository';
+import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
 const DESKTOP_BREAKPOINT = 992
 
@@ -19,49 +21,46 @@ export class SuggestionsComponent implements OnInit {
 
   categories = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature']
 
-  productRequests: ProductRequest[];
+  // productRequests: ProductRequest[];
+  //
+  // // sortby: SuggestionSortOptions = SuggestionSortOptions.MostUpvotes;
+  // // selectedCategory = 'All';
 
-  sortby: SuggestionSortOptions = SuggestionSortOptions.MostUpvotes;
-  selectedCategory = 'All';
+  sortBy$ = new BehaviorSubject(SuggestionSortOptions.MostUpvotes);
+  categoryFilter$ = new BehaviorSubject('All')
 
-  get filteredSuggestions() {
-    return this.productRequests
-      .filter(x => x.status === 'Suggestion')
-      .filter(x => this.selectedCategory === 'All'
-        || this.selectedCategory.toLowerCase() === x.category.toLowerCase())
+  suggestions$ = combineLatest([
+    this.productRequestRepo.getSuggestions(),
+    this.categoryFilter$,
+    this.sortBy$
+  ]).pipe(map(([productRequests, categoryFilter, sortBy]) => {
+    return productRequests
+      .filter(x => categoryFilter === 'All' || categoryFilter === x.category)
       .sort((a, b) => {
-        if (this.sortby === SuggestionSortOptions.MostUpvotes) {
+        if (sortBy === SuggestionSortOptions.MostUpvotes) {
           return b.upvotes - a.upvotes;
-        } else if (this.sortby === SuggestionSortOptions.LeastUpvotes) {
+        } else if (sortBy === SuggestionSortOptions.LeastUpvotes) {
           return a.upvotes - b.upvotes;
-        } else if (this.sortby === SuggestionSortOptions.MostComments) {
+        } else if (sortBy === SuggestionSortOptions.MostComments) {
           return (b.comments ? b.comments.length : 0) - (a.comments ? a.comments.length : 0);
-        } else if (this.sortby === SuggestionSortOptions.LeastComments) {
+        } else if (sortBy === SuggestionSortOptions.LeastComments) {
           return (a.comments ? a.comments.length : 0) - (b.comments ? b.comments.length : 0);
         }
         return 0;
       })
-  }
+  }))
 
-  get mappedStatuses(): Status[] {
-    return statuses.map(x => ({
-      ...x,
-      productRequests: this.productRequests.filter(y =>
-        y.status === x.name)
-    }));
-  }
+  mappedStatuses$ = this.productRequestRepo.getMappedStatuses();
 
-  constructor(private productRequestService: ProductRequestService,
-              private platform: Platform) {
-    this.productRequests = this.productRequestService.productRequests;
+  constructor(private platform: Platform,
+              private productRequestRepo: ProductRequestRepository) {
     this.platform.ready().then(() => {
       this.setDisplayIsDesktopProperty(this.platform.width());
-    })
+    });
   }
 
   @HostListener('window:resize', ['$event'])
   windowResize(event: any) {
-    console.log(event)
     this.setDisplayIsDesktopProperty(event.target.innerWidth);
   }
 

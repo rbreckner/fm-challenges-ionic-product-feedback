@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ProductRequest} from './model/product-request';
+import {ProductRequest} from './product-request/product-request';
 import {productRequestsMock} from './product-requests-mock';
 
 @Injectable({

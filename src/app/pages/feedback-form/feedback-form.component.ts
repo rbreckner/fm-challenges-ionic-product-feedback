@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductRequestService} from '../../../data/product-request.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ProductRequest} from '../../../data/model/product-request';
+import {ProductRequest} from '../../../data/product-request/product-request';
 import { statuses } from 'src/data/model/statuses';
 
 @Component({

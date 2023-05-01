@@ -43,11 +43,11 @@
       </div>
       <app-suggestions-category-filter-card class="mt-24"
                                             [categories]="categories"
-                                            [selectedCategory]="selectedCategory"
-                                            (categorySelected)="selectedCategory = $event">
+                                            [selectedCategory]="(categoryFilter$ | async)!"
+                                            (categorySelected)="categoryFilter$.next($event)">
       </app-suggestions-category-filter-card>
       <app-suggestions-roadmap-card class="mt-24"
-                                    [statuses]="mappedStatuses">
+                                    [statuses]="(mappedStatuses$ | async)!">
       </app-suggestions-roadmap-card>
     </ion-content>
   </ion-menu>
@@ -67,19 +67,19 @@
           </ion-col>
           <ion-col size="4" class="px-5">
             <app-suggestions-category-filter-card [categories]="categories"
-                                                  [selectedCategory]="selectedCategory"
-                                                  (categorySelected)="selectedCategory = $event">
+                                                  [selectedCategory]="(categoryFilter$ | async)!"
+                                                  (categorySelected)="categoryFilter$.next($event)">
             </app-suggestions-category-filter-card>
           </ion-col>
           <ion-col size="4" class="px-5">
-            <app-suggestions-roadmap-card [statuses]="mappedStatuses"></app-suggestions-roadmap-card>
+            <app-suggestions-roadmap-card [statuses]="(mappedStatuses$ | async)!"></app-suggestions-roadmap-card>
           </ion-col>
         </ion-row>
         <ng-container *ngTemplateOutlet="suggestionNav"></ng-container>
       </div>
 
-      <app-suggestions-empty *ngIf="!productRequests?.length"></app-suggestions-empty>
-      <app-product-request-card *ngFor="let item of filteredSuggestions"
+      <app-suggestions-empty *ngIf="!(suggestions$ | async)?.length"></app-suggestions-empty>
+      <app-product-request-card *ngFor="let item of suggestions$ | async"
                                 class="mb-16"
                                 [productRequest]="item">
       </app-product-request-card>
@@ -113,7 +113,7 @@
       </div>
     </ion-col>
     <ion-col>
-      <app-suggestions-sort (selected)="sortby = $event"></app-suggestions-sort>
+      <app-suggestions-sort (selected)="sortBy$.next($event)"></app-suggestions-sort>
     </ion-col>
     <ion-col size="auto">
       <ion-button routerLink="/feedback/create">

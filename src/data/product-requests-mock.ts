@@ -1,4 +1,4 @@
-import {ProductRequest} from './model/product-request';
+import {ProductRequest} from './product-request/product-request';
 
 export const productRequestsMock: ProductRequest[] = [
   {
