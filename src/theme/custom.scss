@@ -214,17 +214,23 @@ ion-segment {
   background-color: var(--app-color-dark-blue);
 }
 
+.container-small {
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .query-container {
   container-type: inline-size;
 }
 
-@container (max-width:600px) {
+@container (max-width:400px) {
   .hide-in-small-container {
     display: none;
   }
 }
 
-@container (min-width:601px) {
+@container (min-width:401px) {
   .hide-in-large-container {
     display: none;
   }
