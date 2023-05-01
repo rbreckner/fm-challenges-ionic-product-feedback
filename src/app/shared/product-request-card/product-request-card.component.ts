@@ -17,7 +17,7 @@ export class ProductRequestCardComponent implements OnInit {
 
   // todo: i dont like this....
   get statusColor() {
-    return statuses.find(x => x.name.toLowerCase() === this.productRequest?.status)?.color;
+    return statuses.find(x => x.name === this.productRequest?.status)?.color;
   }
 
   constructor() { }

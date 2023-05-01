@@ -18,7 +18,7 @@ export class RoadmapComponent implements OnInit {
     return statuses.map(x => ({
       ...x,
       productRequests: this.productRequests.filter(y =>
-        y.status === x.name.toLowerCase())
+        y.status === x.name)
     }));
   }
 

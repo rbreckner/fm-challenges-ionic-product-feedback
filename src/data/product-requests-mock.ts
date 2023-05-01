@@ -6,7 +6,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Add tags for solutions",
     category: "Enhancement",
     upvotes: 112,
-    status: "suggestion",
+    status: "Suggestion",
     description: "Easier to search for solutions based on a specific stack.",
     comments: [
       {
@@ -34,7 +34,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Add a dark theme option",
     category: "Feature",
     upvotes: 99,
-    status: "suggestion",
+    status: "Suggestion",
     description: "It would help people with light sensitivities and who prefer dark mode.",
     comments: [
       {
@@ -86,7 +86,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Q&A within the challenge hubs",
     category: "Feature",
     upvotes: 65,
-    status: "suggestion",
+    status: "Suggestion",
     description: "Challenge-specific Q&A would make for easy reference.",
     comments: [
       {
@@ -105,7 +105,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Add image/video upload to feedback",
     category: "Enhancement",
     upvotes: 51,
-    status: "suggestion",
+    status: "Suggestion",
     description: "Images and screencasts can enhance comments on solutions.",
     comments: [
       {
@@ -133,7 +133,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Ability to follow others",
     category: "Feature",
     upvotes: 42,
-    status: "suggestion",
+    status: "Suggestion",
     description: "Stay updated on comments and solutions other people post.",
     comments: [
       {
@@ -174,7 +174,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Preview images not loading",
     category: "Bug",
     upvotes: 3,
-    status: "suggestion",
+    status: "Suggestion",
     description: "Challenge preview images are missing when you apply a filter.",
     comments: []
   },
@@ -183,7 +183,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "More comprehensive reports",
     category: "Feature",
     upvotes: 123,
-    status: "planned",
+    status: "Planned",
     description: "It would be great to see a more detailed breakdown of solutions.",
     comments: [
       {
@@ -211,7 +211,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Learning paths",
     category: "Feature",
     upvotes: 28,
-    status: "planned",
+    status: "Planned",
     description: "Sequenced projects for different goals to help people improve.",
     comments: [
       {
@@ -230,7 +230,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "One-click portfolio generation",
     category: "Feature",
     upvotes: 62,
-    status: "in-progress",
+    status: "In-Progress",
     description: "Add ability to create professional looking portfolio from profile.",
     comments: [
       {
@@ -249,7 +249,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Bookmark challenges",
     category: "Feature",
     upvotes: 31,
-    status: "in-progress",
+    status: "In-Progress",
     description: "Be able to bookmark challenges to take later on.",
     comments: [
       {
@@ -268,7 +268,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Animated solution screenshots",
     category: "Bug",
     upvotes: 9,
-    status: "in-progress",
+    status: "In-Progress",
     description: "Screenshots of solutions with animations don’t display correctly.",
     comments: []
   },
@@ -277,7 +277,7 @@ export const productRequestsMock: ProductRequest[] = [
     title: "Add micro-interactions",
     category: "Enhancement",
     upvotes: 71,
-    status: "live",
+    status: "Live",
     description: "Small animations at specific points can add delight.",
     comments: [
       {

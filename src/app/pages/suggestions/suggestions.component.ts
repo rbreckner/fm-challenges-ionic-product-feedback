@@ -26,7 +26,7 @@ export class SuggestionsComponent implements OnInit {
 
   get filteredSuggestions() {
     return this.productRequests
-      .filter(x => x.status === 'suggestion')
+      .filter(x => x.status === 'Suggestion')
       .filter(x => this.selectedCategory === 'All'
         || this.selectedCategory.toLowerCase() === x.category.toLowerCase())
       .sort((a, b) => {
@@ -47,7 +47,7 @@ export class SuggestionsComponent implements OnInit {
     return statuses.map(x => ({
       ...x,
       productRequests: this.productRequests.filter(y =>
-        y.status === x.name.toLowerCase())
+        y.status === x.name)
     }));
   }
 

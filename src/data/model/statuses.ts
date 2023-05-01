@@ -9,6 +9,11 @@ export interface Status {
 }
 
 export const statuses: Status[] = [
+  // {
+  //   name: 'Suggestion',
+  //   description: '',
+  //   color: '',
+  // },
   {
     name: 'Planned',
     description: 'Ideas prioritized for research',

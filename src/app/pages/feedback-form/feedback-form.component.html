@@ -52,6 +52,21 @@
               </ion-select>
             </div>
 
+            <div *ngIf="productRequestId"
+                 class="mt-24">
+              <label class="app-title">Update Status</label>
+              <p>Change feedback state</p>
+              <ion-select formControlName="status"
+                          interface="popover"
+                          mode="ios"
+                          [legacy]="true">
+                <ion-select-option *ngFor="let status of statuses"
+                                   [value]="status.name">
+                  {{status.name}}
+                </ion-select-option>
+              </ion-select>
+            </div>
+
             <div class="mt-24">
               <label class="app-title">Feedback Detail</label>
               <p>Include any specific comments on what should be improved, added, etc.</p>
