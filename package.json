@@ -1,8 +1,7 @@
 {
   "name": "fm-challenges-ionic-product-feedback",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "mail@rene.tk",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -69,5 +68,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.8.4"
   },
-  "description": "An Ionic project"
+  "description": "Portfolio Webapp based on Frontend Mentor design."
 }

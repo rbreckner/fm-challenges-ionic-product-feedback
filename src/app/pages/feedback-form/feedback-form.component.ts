@@ -58,6 +58,9 @@ export class FeedbackFormComponent implements OnInit {
   }
 
   delete() {
-
+    if (this.productRequestId) {
+      this.productRequestRepo.delete(this.productRequestId);
+      this.router.navigate(['/']);
+    }
   }
 }

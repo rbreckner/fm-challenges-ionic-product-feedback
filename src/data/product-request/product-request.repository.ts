@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {createStore} from '@ngneat/elf';
 import {
-  addEntities, getEntitiesCount, getEntity,
+  addEntities, deleteEntities, getEntitiesCount, getEntity,
   selectAllEntities,
   selectEntity,
   selectManyByPredicate,
@@ -55,6 +55,11 @@ export class ProductRequestRepository {
 
   update(productRequestId: string, productRequest: ProductRequest) {
     store.update(updateEntities(productRequestId, productRequest));
+  }
+
+
+  delete(productRequestId: string) {
+    store.update(deleteEntities(productRequestId));
   }
 
   selectSuggestions(): Observable<ProductRequest[]> {
